@@ -5,11 +5,29 @@ import * as three from "three"
 const scene = new three.Scene()
 
 const camera= new three.PerspectiveCamera(75 ,window.innerWidth/window.innerHeight, 0.1 , 1000)
-const renderer = new three.WebGL1Renderer()
+const renderer = new three.WebGLRenderer()
 console.log(scene);
 renderer.setSize(window.innerWidth,window.innerHeight)
 document.body.appendChild(renderer.domElement)
 const material=new three.MeshBasicMaterial({
   color:0x00FF00
 })
-const boxGeometry = new three.boxGeometry(1, 1 ,1)
+const boxGeometry = new three.BoxGeometry(1, 1 ,1)
+const mesh=new three.Mesh(boxGeometry,material)
+
+scene.add(mesh)
+
+
+
+camera.position.z= 5
+function animate(){
+  requestAnimationFrame(animate)
+  renderer.render(scene , camera)
+  mesh.rotation.x+=.01
+  mesh.rotation.y+=.01
+
+
+}
+
+
+animate()

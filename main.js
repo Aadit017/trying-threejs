@@ -8,11 +8,12 @@ const camera= new three.PerspectiveCamera(75 ,window.innerWidth/window.innerHeig
 const renderer = new three.WebGLRenderer()
 console.log(scene);
 renderer.setSize(window.innerWidth,window.innerHeight)
+renderer.setPixelRatio(devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 const material=new three.MeshBasicMaterial({
   color:0x00FF00
 })
-const boxGeometry = new three.BoxGeometry(1, 1 ,1)
+  const boxGeometry = new three.BoxGeometry(1, 1 ,1)
 const mesh=new three.Mesh(boxGeometry,material)
 
 scene.add(mesh)
@@ -25,8 +26,7 @@ function animate(){
   renderer.render(scene , camera)
   mesh.rotation.x+=.01
   mesh.rotation.y+=.01
-
-
+  // mesh.rotation.z+=.01
 }
 
 

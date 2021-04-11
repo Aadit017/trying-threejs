@@ -9,3 +9,7 @@ const renderer = new three.WebGL1Renderer()
 console.log(scene);
 renderer.setSize(window.innerWidth,window.innerHeight)
 document.body.appendChild(renderer.domElement)
+const material=new three.MeshBasicMaterial({
+  color:0x00FF00
+})
+const boxGeometry = new three.boxGeometry(1, 1 ,1)

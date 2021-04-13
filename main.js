@@ -12,7 +12,7 @@ const material=new three.MeshBasicMaterial({
 })
 const boxGeometry = new three.BoxGeometry(1, 1 ,1)
 const mesh=new three.Mesh(boxGeometry,material)
-scene.add(mesh)
+// scene.add(mesh)
 camera.position.z= 5
 
 const planeGeometry=new three.PlaneGeometry(5, 5, 10, 10)
@@ -23,12 +23,19 @@ const planeMaterial=new three.MeshPhongMaterial({
 const planeMesh=new three.Mesh(planeGeometry, planeMaterial)
 scene.add(planeMesh)
 
+console.log(planeMesh.geometry.attributes.position.array);
+const {array}= planeMesh.geometry.attributes.position
+
+for(let i=0; i<array.length ; i+=3 ){ 
+  const [x,y,z]=[i, i+1 , i+2] 
+  console.log(array[i]);
+}
 
 const light=new three.DirectionalLight(
   0xffffff , 1)
 
 light.position.set(0 , 0, 1)
-scene.add(light)
+scene.add(light  )
 
 
 function animate(){

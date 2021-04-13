@@ -16,11 +16,21 @@ scene.add(mesh)
 camera.position.z= 5
 
 const planeGeometry=new three.PlaneGeometry(5, 5, 10, 10)
-const planeMaterial=new three.MeshBasicMaterial({
-  color:0xff0000
+const planeMaterial=new three.MeshPhongMaterial({
+  color:0xff0000, 
+  side:three.DoubleSide
 })
 const planeMesh=new three.Mesh(planeGeometry, planeMaterial)
 scene.add(planeMesh)
+
+
+const light=new three.DirectionalLight(
+  0xffffff , 1)
+
+light.position.set(0 , 0, 1)
+scene.add(light)
+
+
 function animate(){
   requestAnimationFrame(animate)
   renderer.render(scene , camera)
